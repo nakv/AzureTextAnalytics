@@ -12,29 +12,28 @@
     <main>
         <div id="form-main">
             <div id="form-div">
-              <form class="form" id="form1">
-                
-                <p class="text">
-                  <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Text"></textarea>
-                </p>
-                
-                
-                <div class="submit">
-                    <input type="submit" value="ANALYZE" id="button-blue"/>
-                    <div class="ease"></div>
-                </div>
-            </form>
-        </div>
+                <form id="myForm">
+                    <input type="text" name="text" />
+                    <button type="submit">Submit</button>
+                </form>
+
+
+
+            </div>
+            <table id="responseTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>ISO6391 Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
     </main>
 
-    <script>
-        (async function() {
-            const {
-                text
-            } = await (await fetch(`/api/src/functions`)).json();
-            document.querySelector('#name').textContent = text;
-        }());
-    </script>
+
 </body>
 
 </html>
