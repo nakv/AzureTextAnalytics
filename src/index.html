@@ -10,8 +10,21 @@
 
 <body>
     <main>
-        <h1>Chào mừng bạn đến với website Azure AI Text Analytics! !!</h1>
-        <p>Loading content from the API: <b id="name">...</b></p>
+        <div id="form-main">
+            <div id="form-div">
+              <form class="form" id="form1">
+                
+                <p class="text">
+                  <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Text"></textarea>
+                </p>
+                
+                
+                <div class="submit">
+                    <input type="submit" value="ANALYZE" id="button-blue"/>
+                    <div class="ease"></div>
+                </div>
+            </form>
+        </div>
     </main>
 
     <script>
