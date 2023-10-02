@@ -55,20 +55,22 @@
 
             function displayResult(result) {
                 const tableBody = document.getElementById("resultBody");
-                tableBody.innerHTML = ""; // Clear previous results
+                tableBody.innerHTML = ""; // Xóa các kết quả trước đó
+
+                let html = "";
 
                 result.documents.forEach((document) => {
-                    const row = document.createElement("tr");
-                    const languageCell = document.createElement("td");
-                    const scoreCell = document.createElement("td");
+                    const language = document.detectedLanguages[0];
 
-                    languageCell.textContent = document.detectedLanguages[0].name;
-                    scoreCell.textContent = document.detectedLanguages[0].score;
-
-                    row.appendChild(languageCell);
-                    row.appendChild(scoreCell);
-                    tableBody.appendChild(row);
+                    html += `
+            <tr>
+                <td>${language.name}</td>
+                <td>${language.score}</td>
+            </tr>
+        `;
                 });
+
+                tableBody.innerHTML = html;
             }
         </script>
     </main>
