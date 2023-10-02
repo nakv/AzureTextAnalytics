@@ -26,7 +26,27 @@
             </thead>
             <tbody id="resultBody"></tbody>
         </table>
+        <br>
+        <h2>Sentiment Analytics</h2>
+        <form id="languageForm">
+            <label for="languageSelect">Ngôn ngữ:</label>
+            <select id="languageSelect">
 
+            </select>
+
+            <label for="textInput">Văn bản:</label>
+            <input type="text" id="textInput" placeholder="Nhập văn bản">
+
+            <button type="submit">Gửi</button>
+        </form>
+        <table id="resultTable2">
+            <thead>
+                <tr>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="resultBody2"></tbody>
+        </table>
         <script>
             document.getElementById("myForm").addEventListener("submit", function(event) {
                 event.preventDefault();
@@ -66,6 +86,58 @@
             <tr>
                 <td>${language.name}</td>
                 <td>${language.score}</td>
+            </tr>
+        `;
+                });
+
+                tableBody.innerHTML = html;
+            }
+        </script>
+        <script>
+            document.getElementById("languageForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                sendSentimentData();
+            });
+
+            async function sendSentimentData() {
+                const languageSelect = document.getElementById("languageSelect");
+                const selectedLanguage = languageSelect.value;
+                const textInput = document.getElementById("textInput").value;
+
+                const dataToSend = {
+                    documents: [{
+                        id: '1',
+                        language: selectedLanguage,
+                        text: textInput
+                    }]
+                };
+
+                const response = await fetch('https://textfunctionapp.azurewebsites.net/api/sentimentAnalyticsFunc?code=KMzMYbTewRTNb2XlHV_3xj_mtY0Srqxc6k3WANcd4-pfAzFuCFhgVw==', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dataToSend)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    displaySentimentResult(result);
+                } else {
+                    console.error('Error:', response.status);
+                }
+            }
+
+            function displaySentimentResult(result) {
+                const tableBody = document.getElementById("resultBody2");
+                tableBody.innerHTML = ""; // Xóa các kết quả trước đó
+
+                let html = "";
+
+                result.documents.forEach((document) => {
+                    html += `
+            <tr>
+                <td>${document.score}</td>
             </tr>
         `;
                 });
