@@ -93,7 +93,7 @@
 
             async function sendData() {
                 const inputData = document.getElementById("inputData").value;
-                const response = await fetch('https://textfunctionapp.azurewebsites.net/api/languageDetectionFunc?code=0DeYDX1DnHxpUkO_jGNfBxd2NTgSUWjBLFUkEz4qgZnLAzFuok69qQ==', {
+                const response = await fetch('<FUNCTION-APP-ENDPOIN>/api/<FUNCTION NAME>?code=<YOUR-FUNCTION-AUTHORIZTION-KEY>', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -143,7 +143,7 @@
                 const languageSelect = document.getElementById("languageSelect");
                 const selectedLanguage = languageSelect.value;
                 const textInput = document.getElementById("textInput").value;
-                const response = await fetch('https://textfunctionapp.azurewebsites.net/api/sentimentAnalyticsFunc?code=KMzMYbTewRTNb2XlHV_3xj_mtY0Srqxc6k3WANcd4-pfAzFuCFhgVw==', {
+                const response = await fetch('<FUNCTION-APP-ENDPOIN>/api/<FUNCTION NAME>?code=<YOUR-FUNCTION-AUTHORIZTION-KEY>', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
