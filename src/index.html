@@ -171,13 +171,13 @@
                 let html = "";
 
                 result.documents.forEach((document) => {
-                    const language2 = document.score;
+                    const language2 = document;
 
                     html += `
             <tr>
 
-                <td>${language2}</td>
-                <p>${language2.error[0]}</p>
+                <td>${language2.score}</td>
+                <p>${language2.errors[0].message}</p>
             </tr>
         `;
                 });
