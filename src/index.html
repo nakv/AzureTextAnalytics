@@ -80,7 +80,7 @@
             <thead>
                 <tr>
                     <th>Sentiment Score: </th>
-                    <th>Errors: </th>
+
                 </tr>
             </thead>
             <tbody id="resultBody2"></tbody>
@@ -176,13 +176,13 @@
                         id,
                         score
                     } = document;
-                    const error = document.errors.length > 0 ? `<p>${document.errors[0].message}</p>` : "";
+
 
                     html += `
       <tr>
 
         <td>${score}</td>
-        <td>${error}</td>
+
       </tr>
     `;
                 });
