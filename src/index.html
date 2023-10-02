@@ -79,7 +79,8 @@
         <table id="resultTable2">
             <thead>
                 <tr>
-                    <th>Sentiment Score</th>
+                    <th>Sentiment Score: </th>
+                    <th>Errors: </th>
                 </tr>
             </thead>
             <tbody id="resultBody2"></tbody>
@@ -171,15 +172,19 @@
                 let html = "";
 
                 result.documents.forEach((document) => {
-                    const language2 = document;
+                    const {
+                        id,
+                        score
+                    } = document;
+                    const error = document.errors.length > 0 ? `<p>${document.errors[0].message}</p>` : "";
 
                     html += `
-            <tr>
+      <tr>
 
-                <td>${language2.score}</td>
-                <p>${language2.errors[0].message}</p>
-            </tr>
-        `;
+        <td>${score}</td>
+        <td>${error}</td>
+      </tr>
+    `;
                 });
 
                 tableBody2.innerHTML = html;
