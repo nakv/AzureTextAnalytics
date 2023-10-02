@@ -14,7 +14,7 @@
         <html>
 
         <head>
-            <title>Form Data</title>
+            <title>Azure AI Services: Language Analytics</title>
         </head>
 
         <body>
@@ -64,7 +64,7 @@
                     const tableBody = document.getElementById("resultBody");
                     tableBody.innerHTML = "";
                     result.documents.forEach((document) => {
-                        const row = să("tr");
+                        const row = document.createElement("tr");
                         const languageCell = document.createElement("td");
                         const scoreCell = document.createElement("td");
 
