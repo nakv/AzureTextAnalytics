@@ -21,6 +21,7 @@
             <thead>
                 <tr>
                     <th>Language</th>
+                    <th>iso6391Name</th>
                     <th>Score</th>
                 </tr>
             </thead>
@@ -78,7 +79,7 @@
         <table id="resultTable2">
             <thead>
                 <tr>
-                    <th>Score</th>
+                    <th>Sentiment Score</th>
                 </tr>
             </thead>
             <tbody id="resultBody2"></tbody>
@@ -121,7 +122,9 @@
                     html += `
             <tr>
                 <td>${language.name}</td>
+                <td>${language.iso6391Name}</td>
                 <td>${language.score}</td>
+
             </tr>
         `;
                 });
@@ -168,12 +171,13 @@
                 let html = "";
 
                 result.documents.forEach((document) => {
-                    const language2 = document.score[0];
+                    const language2 = document.score;
 
                     html += `
             <tr>
 
-                <td>${language2.score}</td>
+                <td>${language2}</td>
+                <p>${language2.error[0]}</p>
             </tr>
         `;
                 });
