@@ -62,9 +62,9 @@
 
                 function displayResult(result) {
                     const tableBody = document.getElementById("resultBody");
-
+                    tableBody.innerHTML = "";
                     result.documents.forEach((document) => {
-                        const row = document.createElement("tr");
+                        const row = să("tr");
                         const languageCell = document.createElement("td");
                         const scoreCell = document.createElement("td");
 
